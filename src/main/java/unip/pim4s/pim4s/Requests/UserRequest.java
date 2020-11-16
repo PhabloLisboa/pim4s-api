@@ -4,11 +4,15 @@ public class UserRequest {
 
 	private String email;
 	private String password;
+	private String phone;
+	private int roleId;
 
-	public UserRequest(String email, String password) {
+	public UserRequest(String email, String password, String phone, Integer roleId) {
 		super();
 		this.email = email;
 		this.password = password;
+		this.phone = phone;
+		this.roleId = roleId;
 	}
 
 	public String getEmail() {
@@ -26,13 +30,22 @@ public class UserRequest {
 	public void setPassword(String password) {
 		this.password = password;
 	}
+
 //
-//	public int getRoleId() {
-//		return roleId;
-//	}
-//
-//	public void setRoleId(int roleId) {
-//		this.roleId = roleId;
-//	}
+	public int getRoleId() {
+		return roleId;
+	}
+
+	public void setRoleId(int roleId) {
+		this.roleId = roleId;
+	}
+
+	public String getPhone() {
+		return phone;
+	}
+
+	public void setPhone(String phone) {
+		this.phone = phone;
+	}
 
 }

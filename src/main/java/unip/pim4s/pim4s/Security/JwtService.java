@@ -36,7 +36,9 @@ public class JwtService implements Filter {
 
 		try {
 			String path = request.getRequestURI();
-			if (!path.equals("/authenticate")) {
+			String method = request.getMethod();
+			if (!path.equals("/authenticate")
+					&& (!path.equals("/clients") && method.equalsIgnoreCase("POST") && !path.equals("/token"))) {
 				String token = request.getHeader("authorization").split(" ")[1];
 
 				if (token == null)

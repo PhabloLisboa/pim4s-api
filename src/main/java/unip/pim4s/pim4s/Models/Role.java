@@ -1,9 +1,14 @@
 package unip.pim4s.pim4s.Models;
 
+import java.util.Set;
+
+import javax.persistence.CascadeType;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Role {
@@ -11,9 +16,9 @@ public class Role {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 
-//	@OneToMany(mappedBy = "role")
-//	@ElementCollection
-//	private Set<User> users;
+	@OneToMany(mappedBy = "role", cascade = CascadeType.ALL)
+	@ElementCollection
+	private Set<User> users;
 
 	private String description;
 
@@ -34,6 +39,11 @@ public class Role {
 
 	public void setDescription(String description) {
 		this.description = description;
+	}
+
+	@Override
+	public String toString() {
+		return "{\"id\":" + id + ", \"description\":\"" + description + "\"}";
 	}
 
 }
